@@ -1,0 +1,9 @@
+# Pastas do Backend
+venv/
+.venv/
+__pycache__/
+*.pyc
+
+# Arquivos de sistema na raiz
+.DS_Store
+.vscode/
