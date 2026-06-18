@@ -7,3 +7,5 @@ __pycache__/
 # Arquivos de sistema na raiz
 .DS_Store
 .vscode/
+**/.env
+.env
