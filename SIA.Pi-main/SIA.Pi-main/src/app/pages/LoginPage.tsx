@@ -15,28 +15,21 @@ export function LoginPage() {
     setErro("");
     setCarregando(true);
 
-    try {
-      // Esta é a "ponte" que liga o Front ao Back-end (que está a rodar na porta 8000)
-      const resposta = await fetch("http://127.0.0.1:8000/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, senha }),
-      });
-
-      if (resposta.ok) {
-        const dados = await resposta.json();
-        localStorage.setItem("token", dados.access_token);
-        navigate("/app"); // Vai para o painel principal
+    // MODO APRESENTAÇÃO: Espera 1 segundo para dar o efeito visual de carregamento
+    setTimeout(() => {
+      
+      // Verificação simples e direta para a apresentação
+      if (email === "adm@gmail.com" && senha === "adm123") {
+        // Passou! Guarda um token falso e vai para o sistema
+        localStorage.setItem("token", "liberado");
+        navigate("/app"); 
       } else {
+        // Errou o e-mail ou a palavra-passe
         setErro("Credenciais inválidas. Tente novamente.");
       }
-    } catch (error) {
-      setErro("Erro ao conectar com o servidor. Verifique se o Back-end está ligado.");
-    } finally {
+      
       setCarregando(false);
-    }
+    }, 1000); 
   };
 
   return (

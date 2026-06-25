@@ -4,16 +4,11 @@ import imgKey1 from "figma:asset/82a4146fae8dfb2e6b7c181095f257c2a0f3f685.png";
 import imgLandlord from "figma:asset/b959b521da184d0c7440c394efd6a1ad9b284bc7.png";
 import imgRemoveKey from "figma:asset/85c267c7f68fe91a12fb91175738080249df21e6.png";
 
-// =========================================================================
-// ⚙️ ÁREA DE CONFIGURAÇÃO DAS TAGS NFC (Preencha quando seu colega enviar)
-// =========================================================================
-const TAG_AUTORIZADA = "TAG_CERTA_AQUI"; // Exemplo: "A1B2C3D4"
-const TAG_NEGADA = "TAG_ERRADA_AQUI";    // Exemplo: "E5F6G7H8"
+const TAG_AUTORIZADA = "79218B06"; 
+const TAG_NEGADA = "3391D806";  
 
-// Dados de quem vai retirar a chave quando a Tag Autorizada for lida:
 const NOME_PROFESSOR = "Prof. Ricardo";
 const CODIGO_CHAVE_VINCULADA = "SALA-101";
-// =========================================================================
 
 const statusColors: Record<string, string> = {
   "em_uso": "bg-[#ffc34c]",
@@ -65,14 +60,11 @@ export function DashboardPage() {
     carregarDados();
   }, []);
 
-  // ---------------------------------------------------------
-  // LÓGICA DE TROCA DE STATUS QUANDO A TAG É LIDA
-  // ---------------------------------------------------------
   const processarLeituraNFC = (tagId: string) => {
     // 1. Verifica se é a tag programada para ser NEGADA
     if (tagId === TAG_NEGADA) {
       alert("❌ ACESSO NEGADO: Esta Tag não possui permissão para retirar chaves.");
-      return; // Para a execução aqui, não faz mais nada.
+      return; 
     }
 
     // 2. Verifica se é a tag programada para ser AUTORIZADA
@@ -111,9 +103,6 @@ export function DashboardPage() {
     }
   };
 
-  // ---------------------------------------------------------
-  // CONEXÃO DIRETA COM O ESP32 VIA CABO USB
-  // ---------------------------------------------------------
   const conectarESP32 = async () => {
     try {
       const navSerial = (navigator as any).serial;
